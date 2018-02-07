@@ -30,4 +30,11 @@ node_modules
 .settings
 target
 .gitkeep
-bookmark-ui/node
+node/
+
+.idea/
+.project
+.settings/
+nbactions.xml
+nbproject/
+npm-debug.log
