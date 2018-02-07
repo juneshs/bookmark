@@ -576,3 +576,5 @@ __pycache__/
 build/
 /static
 /static/
+
+/bookmark-services/src/main/resources/static
