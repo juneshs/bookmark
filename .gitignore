@@ -577,5 +577,5 @@ build/
 /static
 /static/
 
-/bookmark-services/src/main/resources/static
-bookmark-services/src/main/resources/static
+bookmark-services/src/main/resources/static/
+
