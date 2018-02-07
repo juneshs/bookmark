@@ -574,8 +574,5 @@ __pycache__/
 
 ### VisualStudio Patch ###
 build/
-/als-omega-ws9-ui-service/src/main/resources/static
-/als-omega-ws9-ui-ui/drivers
-/als-omega-ws9-ui-ui/node
-/als-omega-ws9-ui-ui/node_modules
-merge.sh
+/static
+/static/
