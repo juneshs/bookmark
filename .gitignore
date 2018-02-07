@@ -29,3 +29,5 @@ node_modules
 *.prefs
 .settings
 target
+.gitkeep
+bookmark-ui/node
