@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.jk.tool</groupId>
+    <artifactId>bookmark</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>bookmark-ui</artifactId>
+  
+  <properties>
+    <frontend-maven-plugin-version>1.0</frontend-maven-plugin-version>
+    <node.version>v6.11.0</node.version>
+    <npm.version>3.10.6</npm.version>
+    <antrun.version>1.8</antrun.version>
+    <antrun.source.dir>dist</antrun.source.dir>
+    <antrun.target.dir>../bookmark-services/src/main/resources/static</antrun.target.dir>
+    <skipProductionPackaging>false</skipProductionPackaging>
+  </properties>
+  
+  <build>
+	    <plugins>
+	    
+	      <plugin>
+	        <groupId>com.github.eirslett</groupId>
+	        <artifactId>frontend-maven-plugin</artifactId>
+	        <version>${frontend-maven-plugin-version}</version>
+	
+			<executions>
+			<!-- Installs node and npm if not installed in the current System / workspace -->
+<!-- 	          <execution> -->
+<!-- 	            <id>install node and npm</id> -->
+<!-- 	            <goals> -->
+<!-- 	              <goal>install-node-and-npm</goal> -->
+<!-- 	            </goals> -->
+<!-- 	            <configuration> -->
+<!-- 	              <nodeVersion>${node.version}</nodeVersion> -->
+<!-- 	              <npmVersion>${npm.version}</npmVersion> -->
+<!-- 				  <nodeDownloadRoot>${node.download.root}</nodeDownloadRoot> -->
+<!-- 				  <npmDownloadRoot>${npm.download.root}</npmDownloadRoot> -->
+<!-- 	            </configuration> -->
+<!-- 	          </execution> -->
+			
+<!-- 			  <execution> -->
+<!-- 	            <id>env install</id> -->
+<!-- 	            <goals> -->
+<!-- 	              <goal>npm</goal> -->
+<!-- 	            </goals> -->
+<!-- 	            <configuration> -->
+<!-- 	              <arguments>install cross-env</arguments> -->
+<!-- 				  <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven> -->
+<!-- 				</configuration> -->
+<!-- 	          </execution> -->
+	
+			<!-- Installs all required packages using npm. It picks custom-intall properties from Package.json -->
+<!-- 			  <execution> -->
+<!-- 	            <id>npm install</id> -->
+<!-- 	            <goals> -->
+<!-- 	              <goal>npm</goal> -->
+<!-- 	            </goals> -->
+<!-- 	            <configuration> -->
+<!-- 	              <arguments>run custom-install</arguments> -->
+<!-- 				  <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven> -->
+<!-- 				</configuration> -->
+<!-- 	          </execution> -->
+	          
+			<!-- Builds angular files using tool "ng build". It picks build properties from Package.json -->
+			  <execution>
+	            <id>npm run build</id>
+	            <goals>
+	              <goal>npm</goal>
+	            </goals>
+	            <configuration>
+	              <arguments>run build</arguments>
+	            </configuration>
+	          </execution>
+	        </executions>
+	      </plugin>
+		 <!-- Moves all built file to  ../cst-entity-mapper-service/src/main/resources/static-->
+		  <plugin>
+			<artifactId>maven-antrun-plugin</artifactId>
+			
+			 <version>${antrun.version}</version>
+			 <executions>
+			  <execution>
+				<id>copy-static-resources</id>
+				<phase>process-resources</phase>
+				<configuration>
+					<skip>${skipProductionPackaging}</skip>
+					<tasks>
+						<delete dir="${antrun.target.dir}"/>
+						<copy todir="${antrun.target.dir}">
+							<fileset dir="${basedir}/${antrun.source.dir}" includes="**/*" excludes="**/*.map" />
+						</copy>
+					</tasks>
+				</configuration>
+				<goals>
+					<goal>run</goal>
+				</goals>
+			  </execution>
+			 </executions>
+		  </plugin>
+	    </plugins>
+	  </build>
+  
+</project>
