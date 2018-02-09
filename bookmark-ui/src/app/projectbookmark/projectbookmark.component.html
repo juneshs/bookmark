@@ -20,16 +20,23 @@
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
+    <!-- Name Column -->
+    <ng-container matColumnDef="url">
+      <mat-header-cell *matHeaderCellDef> URL </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.url}} </mat-cell>
+    </ng-container>
+
+
+    <!-- Symbol action -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Open </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button onclick="editClick()">Edit</button> </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
-
-<nav>
-  <a routerLink="/home"><button>Home</button></a>
-</nav>
-
 
 
 

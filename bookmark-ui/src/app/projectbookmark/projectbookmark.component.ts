@@ -1,20 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-searchpoc',
-  templateUrl: './searchpoc.component.html',
-  styleUrls: ['./searchpoc.component.css']
+  selector: 'app-projectbookmark',
+  templateUrl: './projectbookmark.component.html',
+  styleUrls: ['./projectbookmark.component.css']
 })
-export class SearchpocComponent implements OnInit {
+export class ProjectbookmarkComponent implements OnInit {
 
 
   constructor(private http: HttpClient) {
   }
 
-  displayedColumns = ['name'];
+  displayedColumns = ['name', 'url', 'action'];
 
   dataSource = new MatTableDataSource(PROJECT_DATA);
 
@@ -28,7 +28,7 @@ export class SearchpocComponent implements OnInit {
   ngOnInit() {
     console.log(PROJECT_DATA);
 
-    this.http.get<Project []>('http://localhost:8080/api/poc').subscribe(data => {
+    this.http.get<Project []>('http://localhost:8080/api/projectbookmarks').subscribe(data => {
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
 
@@ -43,6 +43,7 @@ export interface Project {
 
 
 const PROJECT_DATA: Project[] = [
-
+  {id: 1, name: 'Hydrogen'},
+  {id: 2, name: 'Helium'}
 
 ];

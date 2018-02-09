@@ -60,6 +60,7 @@ import { ListComponent } from './list/list.component';
 import { SearchpocComponent } from './searchpoc/searchpoc.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ProjectbookmarkComponent } from './projectbookmark/projectbookmark.component';
 
 
 
@@ -69,7 +70,8 @@ import { AppRoutingModule } from './app-routing.module';
     ProjectsComponent,
     ListComponent,
     SearchpocComponent,
-    HomeComponent
+    HomeComponent,
+    ProjectbookmarkComponent
 
   ],
   imports: [
