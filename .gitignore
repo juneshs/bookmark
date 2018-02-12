@@ -39,9 +39,6 @@ nbactions.xml
 nbproject/
 npm-debug.log
 
-
-als-omega-ws9-ui/node
-omega-ws9-ui-services/src/main/resources/static/
 # Created by https://www.gitignore.io/api/eclipse,intellij,java,maven,node,visualstudio,leiningen,grunt,bower,webstorm,visualstudiocode
 
 ### Eclipse ###
