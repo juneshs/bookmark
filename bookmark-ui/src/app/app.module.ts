@@ -56,11 +56,12 @@ import {
 
 import {HttpModule} from '@angular/http';
 import {CdkTableModule} from '@angular/cdk/table';
-import { ListComponent } from './list/list.component';
 import { SearchpocComponent } from './searchpoc/searchpoc.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProjectbookmarkComponent } from './projectbookmark/projectbookmark.component';
+import {GlobalService} from "./global.service";
+
 
 
 
@@ -68,7 +69,6 @@ import { ProjectbookmarkComponent } from './projectbookmark/projectbookmark.comp
   declarations: [
     AppComponent,
     ProjectsComponent,
-    ListComponent,
     SearchpocComponent,
     HomeComponent,
     ProjectbookmarkComponent
@@ -113,7 +113,7 @@ import { ProjectbookmarkComponent } from './projectbookmark/projectbookmark.comp
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {  }

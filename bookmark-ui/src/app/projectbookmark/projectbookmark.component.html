@@ -30,7 +30,7 @@
     <!-- Symbol action -->
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Open </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <button onclick="editClick()">Edit</button> </mat-cell>
+      <mat-cell *matCellDef="let element"> <button (click)="editClick(element.url)">Open</button> </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

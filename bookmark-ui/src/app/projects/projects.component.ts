@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
+import {GlobalService} from "../global.service";
 
 
 @Component({
@@ -11,12 +12,12 @@ import {HttpClient} from '@angular/common/http';
 export class ProjectsComponent implements OnInit {
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private globalService: GlobalService) {
   }
 
   displayedColumns = ['name', 'action'];
 
-  dataSource = new MatTableDataSource(PROJECT_DATA);
+  dataSource = new MatTableDataSource();
 
 
   applyFilter(filterValue: string) {
@@ -26,7 +27,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(PROJECT_DATA);
+
 
     this.http.get<Project []>('http://localhost:8080/api/projects').subscribe(data => {
       console.log(data);
@@ -34,16 +35,13 @@ export class ProjectsComponent implements OnInit {
 
     });
   }
+
+  selectClick(projectId){
+    this.globalService.projectId.next(projectId);
+  }
 }
 
 export interface Project {
   id: number;
   name: string;
 }
-
-
-const PROJECT_DATA: Project[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'}
-
-];

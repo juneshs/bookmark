@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
+import {GlobalService} from "../global.service";
 
 
 @Component({
@@ -11,12 +12,15 @@ import {HttpClient} from '@angular/common/http';
 export class ProjectbookmarkComponent implements OnInit {
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private globalService: GlobalService) {
+
   }
 
   displayedColumns = ['name', 'url', 'action'];
 
-  dataSource = new MatTableDataSource(PROJECT_DATA);
+  dataSource = new MatTableDataSource();
+
+  projectUrl = 'http://localhost:8080/api/projectbookmarks';
 
 
   applyFilter(filterValue: string) {
@@ -26,24 +30,31 @@ export class ProjectbookmarkComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(PROJECT_DATA);
 
-    this.http.get<Project []>('http://localhost:8080/api/projectbookmarks').subscribe(data => {
-      console.log(data);
-      this.dataSource = new MatTableDataSource(data);
+    this.globalService.projectId.subscribe(
+      (projectId) => {
 
-    });
+        this.projectUrl = 'http://localhost:8080/api/projectbookmarks?projectId=' + projectId;
+
+        this.http.get<Project []>(this.projectUrl).subscribe(data => {
+          this.dataSource = new MatTableDataSource(data);
+        });
+
+      }
+    );
   }
+
+  ngOnDestroy() {
+    this.globalService.projectId.unsubscribe();
+  }
+
+  editClick(url) {
+    window.open(url);
+  }
+
 }
 
 export interface Project {
   id: number;
   name: string;
 }
-
-
-const PROJECT_DATA: Project[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'}
-
-];
