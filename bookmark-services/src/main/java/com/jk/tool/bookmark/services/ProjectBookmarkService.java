@@ -12,8 +12,8 @@ public class ProjectBookmarkService {
     @Autowired
     ProjectBookmarkRepository projectServiceRepository;
 
-    public List<ProjectBookmark> getAllProjectBookmarks(){
-        return projectServiceRepository.findAll();
+    public List<ProjectBookmark> getAllProjectBookmarks(Long projectId){
+        return projectServiceRepository.findByProjectId(projectId);
     }
 
 }

@@ -21,10 +21,12 @@ public class BookmarkServicesApplication {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/projects").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/api/*").allowedOrigins("http://localhost:4200");
             }
         };
     }
+
+
 
 }
 
