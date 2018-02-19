@@ -1,15 +1,47 @@
 <form class="example-form">
 
 
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
+
+  <input matInput placeholder="Fruits"
+         [matAutocomplete]="auto"
+         [formControl]="stateCtrl"
+
+         (keyup)="onKey($event)"
+
+  />
+
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addStatus($event)">
       <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
         <span>{{ state.name }}</span>
       </mat-option>
     </mat-autocomplete>
+
+
   </mat-form-field>
 
 
 
+
+
+  <mat-form-field class="demo-chip-list">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                [removable]="removable" (remove)="remove(fruit)">
+        {{fruit.name}}
+        <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
+      </mat-chip>
+      <input placeholder=""
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)"
+
+      />
+    </mat-chip-list>
+  </mat-form-field>
+
+
 </form>
+
