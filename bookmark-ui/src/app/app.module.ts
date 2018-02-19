@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import {
   MatAutocompleteModule,
+  MatOptionModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
@@ -60,7 +61,8 @@ import { SearchpocComponent } from './searchpoc/searchpoc.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProjectbookmarkComponent } from './projectbookmark/projectbookmark.component';
-import {GlobalService} from "./global.service";
+import { GlobalService} from "./global.service";
+import { AtsearchComponent } from './atsearch/atsearch.component';
 
 
 
@@ -71,13 +73,14 @@ import {GlobalService} from "./global.service";
     ProjectsComponent,
     SearchpocComponent,
     HomeComponent,
-    ProjectbookmarkComponent
+    ProjectbookmarkComponent,
+    AtsearchComponent
 
   ],
   imports: [
     BrowserModule,
-
     MatAutocompleteModule,
+    MatOptionModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -111,7 +114,9 @@ import {GlobalService} from "./global.service";
     MatFormFieldModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [GlobalService],
   bootstrap: [AppComponent]
