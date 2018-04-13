@@ -33,11 +33,12 @@ export class ProjectsComponent implements OnInit {
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
 
-    });
+  });
   }
 
-  selectClick(projectId){
+  selectClick(projectId,projectName){
     this.globalService.projectId.next(projectId);
+    this.globalService.projectName.next(projectName);
   }
 }
 

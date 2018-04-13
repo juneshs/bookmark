@@ -5,4 +5,7 @@ import {ReplaySubject} from "rxjs/ReplaySubject";
 export class GlobalService {
 
   public projectId: Subject<Number> = new ReplaySubject<Number>();
+
+  public projectName: Subject<string> = new ReplaySubject<string>();
+
 }

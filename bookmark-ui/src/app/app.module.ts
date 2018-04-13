@@ -1,19 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-
-import { AppComponent } from './app.component';
-import { ProjectsComponent } from './projects/projects.component';
-
-import { HttpClientModule } from '@angular/common/http';
-
-
-
-
-
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {ProjectsComponent} from './projects/projects.component';
+import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ProjectService} from './shared/project/project.service';
 
 import {
   MatAutocompleteModule,
@@ -51,21 +43,17 @@ import {
   MatFormFieldModule
 } from '@angular/material';
 
-
-
-
-
 import {HttpModule} from '@angular/http';
 import {CdkTableModule} from '@angular/cdk/table';
-import { SearchpocComponent } from './searchpoc/searchpoc.component';
-import { HomeComponent } from './home/home.component';
-import { AppRoutingModule } from './app-routing.module';
-import { ProjectbookmarkComponent } from './projectbookmark/projectbookmark.component';
-import { GlobalService} from "./global.service";
-import { AtsearchComponent } from './atsearch/atsearch.component';
-
-
-
+import {SearchpocComponent} from './searchpoc/searchpoc.component';
+import {HomeComponent} from './home/home.component';
+import {AppRoutingModule} from './app-routing.module';
+import {ProjectbookmarkComponent} from './projectbookmark/projectbookmark.component';
+import {GlobalService} from "./global.service";
+import {AtsearchComponent} from './atsearch/atsearch.component';
+import {AddprojectComponent} from './addproject/addproject.component';
+import {ProjectEditComponent} from './project-edit/project-edit.component';
+import { AddbookmarkComponent } from './addbookmark/addbookmark.component';
 
 @NgModule({
   declarations: [
@@ -74,8 +62,10 @@ import { AtsearchComponent } from './atsearch/atsearch.component';
     SearchpocComponent,
     HomeComponent,
     ProjectbookmarkComponent,
-    AtsearchComponent
-
+    AtsearchComponent,
+    AddprojectComponent,
+    ProjectEditComponent,
+    AddbookmarkComponent
   ],
   imports: [
     BrowserModule,
@@ -118,8 +108,9 @@ import { AtsearchComponent } from './atsearch/atsearch.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [GlobalService],
+  providers: [GlobalService, ProjectService],
   bootstrap: [AppComponent]
 })
-export class AppModule {  }
+export class AppModule {
+}
 

@@ -1,0 +1,64 @@
+<div>
+  <table width="100%" border="1px">
+    <tr>
+      <td class="project-cell" width="30%">
+        <app-projects></app-projects>
+      </td>
+
+      <td class="project-cell" valign="top">
+
+
+
+        <mat-card>
+
+          <form #projectBookmarkForm="ngForm" (ngSubmit)="save(projectBookmarkForm.value)">
+
+            <mat-card-header>
+              <mat-card-title><h2>{{projectbookmark.name ? 'Edit' : 'Add'}} Project For <span>Supplier Mapping {{projectbookmark.projectId}}</span></h2></mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+
+
+
+              <input type="hidden" name="id" [(ngModel)]="projectbookmark.id">
+              <mat-form-field>
+                <input matInput placeholder="Bookmark Name" [(ngModel)]="projectbookmark.name" required name="name" #name>
+              </mat-form-field>
+
+              <input type="hidden" name="id" [(ngModel)]="projectbookmark.projectId ">
+
+
+
+
+
+              <mat-form-field>
+                <input matInput placeholder="URL" [(ngModel)]="projectbookmark.url" required name="name" #name>
+              </mat-form-field>
+
+
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button mat-raised-button color="primary" type="submit"
+                      [disabled]="!projectBookmarkForm.form.valid">Save</button>
+              <button mat-raised-button color="secondary" (click)="remove(projectbookmark.id)"
+                      *ngIf="projectbookmark.id" type="button">Delete</button>
+              <a mat-button routerLink="/car-list">Cancel</a>
+            </mat-card-actions>
+
+          </form>
+
+        </mat-card>
+
+
+      </td>
+
+    </tr>
+  </table>
+</div>
+
+
+<nav>
+  <a routerLink="/home"><button>Home</button></a>
+</nav>

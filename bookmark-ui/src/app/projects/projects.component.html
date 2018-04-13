@@ -24,7 +24,7 @@
     <!-- Symbol action -->
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <button (click)="selectClick(element.id)">Select</button> </mat-cell>
+      <mat-cell *matCellDef="let element"> <button (click)="selectClick(element.id,element.name)">Select</button> </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

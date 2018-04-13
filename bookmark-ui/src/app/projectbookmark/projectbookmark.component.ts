@@ -34,7 +34,7 @@ export class ProjectbookmarkComponent implements OnInit {
     this.globalService.projectId.subscribe(
       (projectId) => {
 
-        this.projectUrl = 'http://localhost:8080/api/projectbookmarks?projectId=' + projectId;
+        this.projectUrl = 'http://localhost:8080/api/projectbookmarkforprojectid?projectId=' + projectId;
 
         this.http.get<Project []>(this.projectUrl).subscribe(data => {
           this.dataSource = new MatTableDataSource(data);
