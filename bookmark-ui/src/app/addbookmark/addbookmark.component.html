@@ -8,17 +8,15 @@
       <td class="project-cell" valign="top">
 
 
-
         <mat-card>
 
           <form #projectBookmarkForm="ngForm" (ngSubmit)="save(projectBookmarkForm.value)">
 
             <mat-card-header>
-              <mat-card-title><h2>{{projectbookmark.name ? 'Edit' : 'Add'}} Project For <span>Supplier Mapping {{projectbookmark.projectId}}</span></h2></mat-card-title>
+              <mat-card-title><h2>{{projectbookmark.name ? 'Edit' : 'Add'}} Project For <span>{{projectbookmark.name}}</span></h2></mat-card-title>
             </mat-card-header>
 
             <mat-card-content>
-
 
 
               <input type="hidden" name="id" [(ngModel)]="projectbookmark.id">
@@ -29,11 +27,8 @@
               <input type="hidden" name="id" [(ngModel)]="projectbookmark.projectId ">
 
 
-
-
-
               <mat-form-field>
-                <input matInput placeholder="URL" [(ngModel)]="projectbookmark.url" required name="name" #name>
+                <input matInput placeholder="URL" [(ngModel)]="projectbookmark.url" required name="url" #url>
               </mat-form-field>
 
 

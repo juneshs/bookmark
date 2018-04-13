@@ -20,23 +20,26 @@ export class AddbookmarkComponent implements OnInit {
   constructor(private http: HttpClient, private globalService: GlobalService) {
   }
 
-  ngOnInit() {
-
-
-  }
 
   ngOnInit() {
 
     this.globalService.projectId.subscribe(
       (projectId) => {
 
-        alert(projectId);
         this.projectbookmark.projectId = projectId;
 
       }
     );
 
-    this.projectbookmark.name = "TEST";
+    this.globalService.projectName.subscribe(
+      (projectName) => {
+
+        this.projectbookmark.name = projectName;
+
+      }
+    );
+
+    //this.projectbookmark.name = "TEST";
     //this.projectbookmark.projectId =2;
     this.projectbookmark.type = "App";
   }

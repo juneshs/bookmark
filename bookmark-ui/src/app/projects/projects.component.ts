@@ -3,7 +3,6 @@ import {MatTableDataSource} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {GlobalService} from "../global.service";
 
-
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -11,8 +10,7 @@ import {GlobalService} from "../global.service";
 })
 export class ProjectsComponent implements OnInit {
 
-
-  constructor(private http: HttpClient,private globalService: GlobalService) {
+  constructor(private http: HttpClient, private globalService: GlobalService) {
   }
 
   displayedColumns = ['name', 'action'];
@@ -28,15 +26,14 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.http.get<Project []>('http://localhost:8080/api/projects').subscribe(data => {
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
 
-  });
+    });
   }
 
-  selectClick(projectId,projectName){
+  selectClick(projectId, projectName) {
     this.globalService.projectId.next(projectId);
     this.globalService.projectName.next(projectName);
   }
