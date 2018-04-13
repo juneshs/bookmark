@@ -25,7 +25,7 @@ export class ProjectEditComponent implements OnInit {
     //alert(JSON.stringify(this.project));
 
 
-    this.http.post<Project []>('http://localhost:8080/api/projects', this.project).subscribe(data => {
+    this.http.post<Project []>('/api/projects', this.project).subscribe(data => {
       console.log(data);
 
     });

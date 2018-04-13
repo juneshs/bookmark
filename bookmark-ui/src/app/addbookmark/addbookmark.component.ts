@@ -49,7 +49,7 @@ export class AddbookmarkComponent implements OnInit {
     alert(JSON.stringify(this.projectbookmark));
 
 
-    this.http.post<Projectbookmark []>('http://localhost:8080/api/projectbookmark', this.projectbookmark).subscribe(data => {
+    this.http.post<Projectbookmark []>('/api/projectbookmark', this.projectbookmark).subscribe(data => {
       console.log(data);
 
     });

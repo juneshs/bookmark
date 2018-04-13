@@ -20,7 +20,7 @@ export class ProjectbookmarkComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
 
-  projectUrl = 'http://localhost:8080/api/projectbookmarks';
+  projectUrl = '/api/projectbookmarks';
 
 
   applyFilter(filterValue: string) {
@@ -34,7 +34,7 @@ export class ProjectbookmarkComponent implements OnInit {
     this.globalService.projectId.subscribe(
       (projectId) => {
 
-        this.projectUrl = 'http://localhost:8080/api/projectbookmarkforprojectid?projectId=' + projectId;
+        this.projectUrl = '/api/projectbookmarkforprojectid?projectId=' + projectId;
 
         this.http.get<Project []>(this.projectUrl).subscribe(data => {
           this.dataSource = new MatTableDataSource(data);

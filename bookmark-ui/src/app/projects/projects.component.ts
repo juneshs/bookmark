@@ -26,7 +26,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.http.get<Project []>('http://localhost:8080/api/projects').subscribe(data => {
+    this.http.get<Project []>('/api/projects').subscribe(data => {
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
 
