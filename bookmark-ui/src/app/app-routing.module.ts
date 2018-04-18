@@ -9,13 +9,11 @@ import {AddprojectComponent} from './addproject/addproject.component'
 import {AddbookmarkComponent} from "./addbookmark/addbookmark.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
-  //{ path: 'home', component: SearchpocComponent},
   {path: 'searchpoc', component: SearchpocComponent},
   {path: 'atsearch', component: AtsearchComponent},
   {path: 'addproject', component: AddprojectComponent},
-  //{path: 'cancelsearchspike', component: CancelsearchspikeComponent},
   {path: 'addbookmark', component: AddbookmarkComponent}
 ];
 

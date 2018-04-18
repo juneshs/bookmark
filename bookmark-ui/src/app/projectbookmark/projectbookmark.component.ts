@@ -12,41 +12,40 @@ import {GlobalService} from "../global.service";
 export class ProjectbookmarkComponent implements OnInit {
 
 
-  constructor(private http: HttpClient, private globalService: GlobalService) {
+  constructor(private http: HttpClient, public globalService: GlobalService) {
 
   }
 
   displayedColumns = ['name', 'url', 'action'];
 
-  dataSource = new MatTableDataSource();
+  //dataSource = new MatTableDataSource();
 
-  projectUrl = '/api/projectbookmarks';
+  // projectUrl = '/api/projectbookmarks';
 
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+    this.globalService.dataSource.filter = filterValue;
   }
 
   ngOnInit() {
 
-    this.globalService.projectId.subscribe(
-      (projectId) => {
-
-        this.projectUrl = '/api/projectbookmarkforprojectid?projectId=' + projectId;
-
-        this.http.get<Project []>(this.projectUrl).subscribe(data => {
-          this.dataSource = new MatTableDataSource(data);
-        });
-
-      }
-    );
+    // this.globalService.projectId.subscribe(
+    //   (projectId) => {
+    //
+    //     this.projectUrl = '/api/projectbookmarkforprojectid?projectId=' + projectId;
+    //
+    //     this.http.get<Project []>(this.projectUrl).subscribe(data => {
+    //       this.dataSource = new MatTableDataSource(data);
+    //     });
+    //
+    //   }
+    // );
+    //
   }
 
-  ngOnDestroy() {
-    this.globalService.projectId.unsubscribe();
-  }
+
 
   editClick(url) {
     window.open(url);

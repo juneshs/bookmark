@@ -1,7 +1,7 @@
 <div>
-  <table width="100%" border="1px">
+  <table width="100%">
     <tr>
-      <td class="project-cell" width="30%">
+      <td class="project-cell" width="30%" valign="top">
         <app-projects></app-projects>
       </td>
 
@@ -13,7 +13,7 @@
           <form #projectBookmarkForm="ngForm" (ngSubmit)="save(projectBookmarkForm.value)">
 
             <mat-card-header>
-              <mat-card-title><h2>{{projectbookmark.name ? 'Edit' : 'Add'}} Project For <span>{{projectbookmark.name}}</span></h2></mat-card-title>
+              <mat-card-title><h2>{{projectbookmark.name ? 'Edit' : 'Add'}} Bookmark  <span>{{globalService.projectName}}</span></h2></mat-card-title>
             </mat-card-header>
 
             <mat-card-content>
@@ -21,10 +21,10 @@
 
               <input type="hidden" name="id" [(ngModel)]="projectbookmark.id">
               <mat-form-field>
-                <input matInput placeholder="Bookmark Name" [(ngModel)]="projectbookmark.name" required name="name" #name>
+                <input matInput placeholder="Bookmark Name" [(ngModel)]="projectbookmark.name" required name="name" #name (focus)="load()">
               </mat-form-field>
 
-              <input type="hidden" name="id" [(ngModel)]="projectbookmark.projectId ">
+              <input type="hidden" name="id" [(ngModel)]="projectbookmark.projectId " value="globalService.projectId">
 
 
               <mat-form-field>

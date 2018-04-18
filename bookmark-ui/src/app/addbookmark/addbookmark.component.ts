@@ -16,37 +16,33 @@ export class AddbookmarkComponent implements OnInit {
 
   bookmarktype = new Bookmarktype(null, null);
 
+  projectName = null;
 
-  constructor(private http: HttpClient, private globalService: GlobalService) {
+
+  constructor(private http: HttpClient, public globalService: GlobalService) {
+    this.projectbookmark.name = globalService.projectName;
   }
 
 
   ngOnInit() {
 
-    this.globalService.projectId.subscribe(
-      (projectId) => {
+    this.load();
 
-        this.projectbookmark.projectId = projectId;
-
-      }
-    );
-
-    this.globalService.projectName.subscribe(
-      (projectName) => {
-
-        this.projectbookmark.name = projectName;
-
-      }
-    );
-
-    //this.projectbookmark.name = "TEST";
-    //this.projectbookmark.projectId =2;
     this.projectbookmark.type = "App";
   }
 
+
+  load() {
+    this.projectbookmark.projectId = this.globalService.projectId;
+    this.projectName = " - " + this.globalService.projectName;
+  }
+
+
   save(form: NgForm) {
 
-    alert(JSON.stringify(this.projectbookmark));
+    this.projectbookmark.projectId = this.globalService.projectId;
+
+    //alert(JSON.stringify(this.projectbookmark));
 
 
     this.http.post<Projectbookmark []>('/api/projectbookmark', this.projectbookmark).subscribe(data => {
@@ -55,5 +51,6 @@ export class AddbookmarkComponent implements OnInit {
     });
 
   }
+
 
 }

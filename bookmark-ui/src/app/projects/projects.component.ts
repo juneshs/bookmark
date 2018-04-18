@@ -33,9 +33,13 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  selectClick(projectId, projectName) {
-    this.globalService.projectId.next(projectId);
-    this.globalService.projectName.next(projectName);
+  selectClick(projectId, projectName) { //alert(projectName);
+    // this.globalService.projectId.next(projectId);
+    // this.globalService.projectName.next(projectName);
+    this.globalService.projectId=projectId;
+    this.globalService.projectName=projectName;
+    this.globalService.getBookmarkData();
+
   }
 }
 

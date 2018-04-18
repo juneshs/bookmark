@@ -16,14 +16,12 @@ export class AddprojectComponent implements OnInit {
   ngOnInit() {
 
 
-    this.globalService.projectId.subscribe(
-      (projectId) => {
-        //this.projectId = projectId;
-      }
-    );
+    // this.globalService.projectId.subscribe(
+    //   (projectId) => {
+    //     //this.projectId = projectId;
+    //   }
+    // );
   }
-
-
 
 
 }

@@ -1,10 +1,6 @@
 <div>
   <table width="100%">
     <tr>
-      <td class="project-cell" width="30%">
-        <app-projects></app-projects>
-      </td>
-
       <td class="project-cell">
 
         <app-project-edit></app-project-edit>
@@ -12,10 +8,18 @@
       </td>
 
     </tr>
+    <tr>
+      <td class="project-cell" width="30%" valign="top">
+        <app-projects></app-projects>
+      </td>
+    </tr>
+
   </table>
 </div>
 
 
 <nav>
-  <a routerLink="/home"><button>Home</button></a>
+  <a routerLink="/home">
+    <button>Home</button>
+  </a>
 </nav>
