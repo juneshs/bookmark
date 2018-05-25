@@ -18,7 +18,7 @@ export class GlobalService {
   public projectId: number;
   public projectName: string;
 
-  public dataSource: MatTableDataSource;
+  public dataSource: MatTableDataSource<Project>;
 
 
   getBookmarkData(){
